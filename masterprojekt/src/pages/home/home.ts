@@ -10,5 +10,9 @@ export class HomePage {
   constructor(public navCtrl: NavController) {
 
   }
-
+  
+  createConsultation(){
+    this.navCtrl.push('NewConsultationPage');
+  }
 }
+
