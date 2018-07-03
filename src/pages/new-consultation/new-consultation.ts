@@ -34,7 +34,7 @@ export class NewConsultationPage implements OnInit{
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewConsultationPage');
   }
-  //use provider
+  //use provider  
   getTasks(){
     this.servicesProvider.getTasks().subscribe( (parts: any) => {
     for (let part of parts) {
