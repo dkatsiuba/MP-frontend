@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {HttpClient} from "@angular/common/http";
-import {HttpHeaders} from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
+import { HttpHeaders } from "@angular/common/http";
+import { ServicesProvider } from '../../providers/services/services';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,15 +23,22 @@ const httpOptions = {
   selector: 'page-new-consultation',
   templateUrl: 'new-consultation.html',
 })
-export class NewConsultationPage {
+export class NewConsultationPage implements OnInit{
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private servicesProvider: ServicesProvider) {
   }
-
-
+  ngOnInit():void{
+    this.getTasks();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewConsultationPage');
   }
-
+  getTasks(){
+    this.servicesProvider.getTasks().subscribe( (parts: any) => {
+    for (let part of parts) {
+    console.log(part.name);
+    }
+    });
+  }
 }
