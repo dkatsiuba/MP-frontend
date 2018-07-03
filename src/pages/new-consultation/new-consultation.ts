@@ -34,11 +34,11 @@ export class NewConsultationPage implements OnInit{
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewConsultationPage');
   }
-  //use provider 
+  //use provider
   getTasks(){
-    this.servicesProvider.getTasks().subscribe( (parts: any) => {
-    for (let part of parts) {
-    console.log(part.name);
+    this.servicesProvider.getTasks().subscribe( (consultations: any) => {
+    for (let c of consultations) {
+    console.log(c.patient.patientenNr);
     }
     });
   }
