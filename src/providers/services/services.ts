@@ -16,7 +16,7 @@ export class ServicesProvider {
   }
 
   getTasks(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/consultations');
+    return this.http.get<any>('http://localhost:8080/consultation');
   }
 
 }
