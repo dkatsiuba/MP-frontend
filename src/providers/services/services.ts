@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { HttpHeaders } from '@angular/common/http';
+
 
 /*
   Generated class for the ServicesProvider provider.
@@ -16,7 +18,12 @@ export class ServicesProvider {
   }
 
   getTasks(): Observable<any>{
-    return this.http.get<any>('http://localhost:8080/consultation');
+    let login = "gregory";
+    let password = "abc123";
+
+    let headers = new HttpHeaders({ 'Content-Type':'/' });
+    headers = headers.append("Authorization", "Basic " + btoa(login + ":" + password));
+    return this.http.get<any>('http://localhost:8080/consultation', { headers: headers });
   }
 
 }

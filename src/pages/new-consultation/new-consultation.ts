@@ -34,12 +34,18 @@ export class NewConsultationPage implements OnInit{
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewConsultationPage');
   }
+
+  pnr = "";
+
   //use provider
   getTasks(){
     this.servicesProvider.getTasks().subscribe( (consultations: any) => {
     for (let c of consultations) {
-    console.log(c.patient.patientenNr);
+    //console.log(c.patient.patientenNr);
+    this.pnr = c.patient.patientenNr;
+      document.getElementById("patientNumber").textContent = this.pnr;
     }
     });
   }
+
 }
